@@ -25,7 +25,8 @@ describe('yashible-role:app', function () {
       'chefignore',
       'LICENSE',
       'requirements.yml',
-      'vagrant.yml'
+      'vagrant.yml',
+      'test/inventory'
     ];
 
     assert.file(expected);
@@ -61,5 +62,10 @@ describe('yashible-role:app', function () {
   it('creates meta/main.yml with appropriate description', function () {
     assert.file('meta/main.yml');
     assert.fileContent('meta/main.yml', new RegExp('description: ' + projectDescription));
+  });
+
+  it('creates test/test.yml with appropriate project name', function () {
+    assert.file('test/test.yml');
+    assert.fileContent('test/test.yml', new RegExp(' {2}roles:\n {4}- ' + projectName));
   });
 });

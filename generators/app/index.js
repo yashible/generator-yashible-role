@@ -40,7 +40,8 @@ module.exports = Generator.extend({
       'chefignore',
       'LICENSE',
       'requirements.yml',
-      'vagrant.yml'
+      'vagrant.yml',
+      'test/inventory'
     ];
 
     for (var i = 0; i < fixedFiles.length; i++) {
@@ -56,6 +57,7 @@ module.exports = Generator.extend({
       'tasks/main.yml',
       'vars/main.yml',
       'meta/main.yml',
+      'test/test.yml',
       'README.md',
       'Vagrantfile'
     ];

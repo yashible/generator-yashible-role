@@ -1,5 +1,5 @@
 yashible.<%= name %>
-<%= Array(name.length).join('=') %>
+==========<%= Array(name.length).join('=') %>
 
 <%= description %>
 

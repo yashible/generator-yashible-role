@@ -55,7 +55,7 @@ describe('yashible-role:app', function () {
   it('creates README.md with appropriate name and description', function () {
     assert.file('README.md');
     assert.fileContent('README.md', new RegExp('^yashible\\.' + projectName + '\\n' +
-      Array(projectName.length).join('=') + '\\n\\n' + projectDescription));
+      Array(('yashible.' + projectName).length + 1).join('=') + '\\n\\n' + projectDescription));
     assert.fileContent('README.md', new RegExp('- \\{ role: yashible\\.' + projectName + ' \\}'));
   });
 

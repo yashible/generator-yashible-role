@@ -89,7 +89,7 @@ module.exports = Generator.extend({
     var metaPath = this.destinationPath('meta/main.yml');
     var metaContent = this.fs.read(metaPath);
     var meta = yaml.parse(metaContent);
-    if (this.props.tags != '') {
+    if (this.props.tags !== '') {
       var tags = this.props.tags.replace(/\s+/g, '').split(',');
       // eslint-disable-next-line camelcase
       meta.galaxy_info.galaxy_tags = tags.concat(meta.galaxy_info.galaxy_tags);

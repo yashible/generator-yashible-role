@@ -3,16 +3,17 @@ var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
-describe('generator-yashible-role:app', function () {
+describe('yashible-role:app', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
-      .withPrompts({someAnswer: true})
       .toPromise();
   });
 
   it('creates files', function () {
-    assert.file([
-      'dummyfile.txt'
-    ]);
+    const expected = [
+      '.gitignore'
+    ];
+
+    assert.file(expected);
   });
 });

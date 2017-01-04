@@ -10,12 +10,7 @@ module.exports = Generator.extend({
       'Welcome to the tremendous ' + chalk.red('generator-yashible-role') + ' generator!'
     ));
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
+    var prompts = [];
 
     return this.prompt(prompts).then(function (props) {
       // To access props later use this.props.someAnswer;
@@ -25,8 +20,8 @@ module.exports = Generator.extend({
 
   writing: function () {
     this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+      this.templatePath('.gitignore'),
+      this.destinationPath('.gitignore')
     );
   },
 

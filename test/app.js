@@ -5,11 +5,13 @@ var helpers = require('yeoman-test');
 
 describe('yashible-role:app', function () {
   var projectName = 'yashible-test';
+  var projectDescription = 'My test yashible role';
 
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withPrompts({
-        name: projectName
+        name: projectName,
+        description: projectDescription
       })
       .toPromise();
   });
@@ -47,5 +49,12 @@ describe('yashible-role:app', function () {
     assert.file('Vagrantfile');
     assert.fileContent('Vagrantfile', new RegExp('config\\.vm\\.synced_folder \'\\.\', \'/' + projectName + '\''));
     assert.fileContent('Vagrantfile', new RegExp('a.provisioning_path = \'/' + projectName + '\''));
+  });
+
+  it('creates README.md with appropriate name and description', function () {
+    assert.file('README.md');
+    assert.fileContent('README.md', new RegExp('^yashible\\.' + projectName + '\\n' +
+      Array(projectName.length).join('=') + '\\n\\n' + projectDescription));
+    assert.fileContent('README.md', new RegExp('- \\{ role: yashible\\.' + projectName + ' \\}'));
   });
 });

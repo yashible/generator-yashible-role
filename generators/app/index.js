@@ -2,6 +2,7 @@
 var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var yaml = require('yamljs');
 
 module.exports = Generator.extend({
   prompting: function () {
@@ -23,6 +24,11 @@ module.exports = Generator.extend({
         name: 'description',
         message: 'Your Role description',
         required: true
+      },
+      {
+        type: 'input',
+        name: 'tags',
+        message: 'Your Role tags (separated by comma, centos is added by default)'
       }];
 
     return this.prompt(prompts).then(function (props) {
@@ -79,5 +85,16 @@ module.exports = Generator.extend({
         this.props
       );
     }
+
+    var metaPath = this.destinationPath('meta/main.yml');
+    var metaContent = this.fs.read(metaPath);
+    var meta = yaml.parse(metaContent);
+    if (this.props.tags != '') {
+      var tags = this.props.tags.replace(/\s+/g, '').split(',');
+      // eslint-disable-next-line camelcase
+      meta.galaxy_info.galaxy_tags = tags.concat(meta.galaxy_info.galaxy_tags);
+    }
+    var yamlContent = yaml.stringify(meta, 4, 2);
+    this.fs.write(metaPath, yamlContent);
   }
 });

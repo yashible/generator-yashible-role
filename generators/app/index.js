@@ -33,7 +33,6 @@ module.exports = Generator.extend({
 
   writing: function () {
     const fixedFiles = [
-      '.gitignore',
       '.kitchen.yml',
       '.travis.yml',
       'ansible.cfg',
@@ -51,6 +50,11 @@ module.exports = Generator.extend({
         this.destinationPath(fixedFiles[i])
       );
     }
+
+    this.fs.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath('.gitignore')
+    );
 
     this.fs.copy(
       this.templatePath('test/integration/default/serverspec/rolename_spec.rb'),

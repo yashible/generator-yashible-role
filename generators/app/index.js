@@ -19,10 +19,23 @@ module.exports = Generator.extend({
   },
 
   writing: function () {
-    this.fs.copy(
-      this.templatePath('.gitignore'),
-      this.destinationPath('.gitignore')
-    );
+    const fixedFiles = [
+      '.gitignore',
+      '.kitchen.yml',
+      '.travis.yml',
+      'ansible.cfg',
+      'chefignore',
+      'LICENSE',
+      'requirements.yml',
+      'vagrant.yml'
+    ];
+
+    for (var i = 0; i < fixedFiles.length; i++) {
+      this.fs.copy(
+        this.templatePath(fixedFiles[i]),
+        this.destinationPath(fixedFiles[i])
+      );
+    }
   },
 
   install: function () {

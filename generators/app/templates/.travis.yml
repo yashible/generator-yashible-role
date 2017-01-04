@@ -1,0 +1,37 @@
+---
+language: python
+python: "2.7"
+
+sudo: required
+
+services:
+  - docker
+
+addons:
+  apt:
+    packages:
+    - python-pip
+
+install:
+  # Install ansible
+  - pip install ansible
+
+  # Check ansible version
+  - ansible --version
+
+  - wget https://packages.chef.io/stable/ubuntu/12.04/chefdk_0.18.26-1_amd64.deb
+
+  - sudo dpkg -i chefdk_0.18.26-1_amd64.deb
+
+  - chef gem install kitchen-ansible --version=0.45.4
+
+  - chef gem install kitchen-docker --version=2.6.0
+
+script:
+  # Basic role syntax check
+  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+
+  - kitchen test
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

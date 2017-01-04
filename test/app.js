@@ -9,9 +9,16 @@ describe('yashible-role:app', function () {
       .toPromise();
   });
 
-  it('creates files', function () {
+  it('creates fixed files', function () {
     const expected = [
-      '.gitignore'
+      '.gitignore',
+      '.kitchen.yml',
+      '.travis.yml',
+      'ansible.cfg',
+      'chefignore',
+      'LICENSE',
+      'requirements.yml',
+      'vagrant.yml'
     ];
 
     assert.file(expected);

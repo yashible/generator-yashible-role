@@ -55,6 +55,7 @@ module.exports = Generator.extend({
       'handlers/main.yml',
       'tasks/main.yml',
       'vars/main.yml',
+      'meta/main.yml',
       'README.md',
       'Vagrantfile'
     ];

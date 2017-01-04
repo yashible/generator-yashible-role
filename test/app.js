@@ -57,4 +57,9 @@ describe('yashible-role:app', function () {
       Array(projectName.length).join('=') + '\\n\\n' + projectDescription));
     assert.fileContent('README.md', new RegExp('- \\{ role: yashible\\.' + projectName + ' \\}'));
   });
+
+  it('creates meta/main.yml with appropriate description', function () {
+    assert.file('meta/main.yml');
+    assert.fileContent('meta/main.yml', new RegExp('description: ' + projectDescription));
+  });
 });

@@ -10,7 +10,12 @@ module.exports = Generator.extend({
       'Welcome to the tremendous ' + chalk.red('generator-yashible-role') + ' generator!'
     ));
 
-    var prompts = [];
+    var prompts = [{
+      type: 'input',
+      name: 'name',
+      default: this.appname,
+      message: 'Your Role name'
+    }];
 
     return this.prompt(prompts).then(function (props) {
       // To access props later use this.props.someAnswer;
@@ -36,6 +41,12 @@ module.exports = Generator.extend({
         this.destinationPath(fixedFiles[i])
       );
     }
+
+    this.fs.copyTpl(
+      this.templatePath('defaults/main.yml'),
+      this.destinationPath('defaults/main.yml'),
+      this.props
+    );
   },
 
   install: function () {

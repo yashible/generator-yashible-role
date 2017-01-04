@@ -4,8 +4,13 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
 describe('yashible-role:app', function () {
+  var projectName = 'yashible-test';
+
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
+      .withPrompts({
+        name: projectName
+      })
       .toPromise();
   });
 
@@ -22,5 +27,10 @@ describe('yashible-role:app', function () {
     ];
 
     assert.file(expected);
+  });
+
+  it('creates defaults/main.yml with project name', function () {
+    assert.file('defaults/main.yml');
+    assert.fileContent('defaults/main.yml', '---\n#defaults file for ' + projectName + '\n');
   });
 });

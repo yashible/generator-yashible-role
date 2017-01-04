@@ -41,7 +41,8 @@ module.exports = Generator.extend({
       'LICENSE',
       'requirements.yml',
       'vagrant.yml',
-      'test/inventory'
+      'test/inventory',
+      'test/integration/default/default.yml'
     ];
 
     for (var i = 0; i < fixedFiles.length; i++) {
@@ -50,6 +51,11 @@ module.exports = Generator.extend({
         this.destinationPath(fixedFiles[i])
       );
     }
+
+    this.fs.copy(
+      this.templatePath('test/integration/default/serverspec/rolename_spec.rb'),
+      this.destinationPath('test/integration/default/serverspec/' + this.props.name + '_spec.rb')
+    );
 
     var templateFiles = [
       'defaults/main.yml',

@@ -68,4 +68,9 @@ describe('yashible-role:app', function () {
     assert.file('test/test.yml');
     assert.fileContent('test/test.yml', new RegExp(' {2}roles:\n {4}- ' + projectName));
   });
+
+  it('creates serverspec files with appropriate name', function () {
+    assert.file('test/integration/default/default.yml');
+    assert.file('test/integration/default/serverspec/' + projectName + '_spec.rb');
+  });
 });

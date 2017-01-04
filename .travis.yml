@@ -12,3 +12,4 @@ deploy:
   on:
     tags: true
     repo: yashible/generator-yashible-role
+    node_js: v7

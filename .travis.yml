@@ -3,8 +3,3 @@ node_js:
   - v7
   - v6
   - v5
-
-deploy:
-  provider: npm
-  email: 'rfhayashi@gmail.com'
-  api_key:

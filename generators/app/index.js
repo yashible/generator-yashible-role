@@ -46,7 +46,8 @@ module.exports = Generator.extend({
       'defaults/main.yml',
       'handlers/main.yml',
       'tasks/main.yml',
-      'vars/main.yml'
+      'vars/main.yml',
+      'Vagrantfile'
     ];
 
     for (var j = 0; j < templateFiles.length; j++) {

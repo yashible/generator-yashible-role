@@ -42,4 +42,10 @@ describe('yashible-role:app', function () {
       assert.fileContent(expected[i] + '/main.yml', '---\n# ' + expected[i] + ' file for ' + projectName + '\n');
     }
   });
+
+  it('creates Vagrantfile with appropriate folder name', function () {
+    assert.file('Vagrantfile');
+    assert.fileContent('Vagrantfile', new RegExp('config\\.vm\\.synced_folder \'\\.\', \'/' + projectName + '\''));
+    assert.fileContent('Vagrantfile', new RegExp('a.provisioning_path = \'/' + projectName + '\''));
+  });
 });

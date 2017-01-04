@@ -1,5 +1,14 @@
 language: node_js
 node_js:
-  - v7
-  - v6
-  - v5
+- v7
+- v6
+- v5
+
+deploy:
+  provider: npm
+  email: rfhayashi@gmail.com
+  api_key:
+    secure: bjtTwflQy1IvMCXyHuKbA6nBEa/iHGqb+piUxqs74VYtANKodjRqnfyG/MICAY6t2wTn6pqNDujp7vE2n44CetVVBX7111A5kGWjo8X5R8L7KGIOBAfjAli9KqCXWBor3HZKZUVIQ12CcQqr3OY5/iyJqN4M2NTObHWGqGvNVCMplgUQsaQVpmkrs3nUiuMk8IQF7WMkrCAouszdS2OMGB+HypBPomO9j5gxcaDbuok+mSdBbGFbCByDzGWkIYJyCRwpOHylR6pgX6ucaE+DeRq09ZuQkrl7JGHLv81RkLmsK7wJEmEveNTvgZnFRM/rxr8deThPaujHZDCIssbrFcUWfR7bkcY7NOWfDRMHmPDYdRNlggf1vJu6Yj0p1A3q3bBvT0YNKh3kSeHhq3Z1qRJa9MNRobxcSNwKoeac49qqTLcU+AjNS/jSFpxut4G6201N9OSN1W/jyhMQtF4apQ2MA6ICNA0Q4C4KrGj6SOry1HIlQkLPq4sL1l57hzlXGAZtwzRDRAYkhJpP6zflV77KOBAKbemRORRn5yOTiCBbtV2bknOIZqCNCoCk96/vlTKPdhHbR4z9lnCNp3fhs19hOwy4F4rhIdnGxZSqJCNIIg0Do3aEmlpx1cAzrJUayVfznhBTrP4s38pGaz5oc07r1bU0iOroGQiBGBlnu4s=
+  on:
+    tags: true
+    repo: yashible/generator-yashible-role

@@ -29,8 +29,17 @@ describe('yashible-role:app', function () {
     assert.file(expected);
   });
 
-  it('creates defaults/main.yml with project name', function () {
-    assert.file('defaults/main.yml');
-    assert.fileContent('defaults/main.yml', '---\n#defaults file for ' + projectName + '\n');
+  it('creates role files with project name', function () {
+    const expected = [
+      'defaults',
+      'handlers',
+      'tasks',
+      'vars'
+    ];
+
+    for (var i = 0; i < expected.length; i++) {
+      assert.file(expected[i] + '/main.yml');
+      assert.fileContent(expected[i] + '/main.yml', '---\n# ' + expected[i] + ' file for ' + projectName + '\n');
+    }
   });
 });

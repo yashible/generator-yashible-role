@@ -42,11 +42,20 @@ module.exports = Generator.extend({
       );
     }
 
-    this.fs.copyTpl(
-      this.templatePath('defaults/main.yml'),
-      this.destinationPath('defaults/main.yml'),
-      this.props
-    );
+    var templateFiles = [
+      'defaults/main.yml',
+      'handlers/main.yml',
+      'tasks/main.yml',
+      'vars/main.yml'
+    ];
+
+    for (var j = 0; j < templateFiles.length; j++) {
+      this.fs.copyTpl(
+        this.templatePath(templateFiles[j]),
+        this.destinationPath(templateFiles[j]),
+        this.props
+      );
+    }
   },
 
   install: function () {
